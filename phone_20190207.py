@@ -2,6 +2,7 @@ import unittest
 
 import pipeline.utils.db as db
 
+# 16 types of phone number 
 class TestUDF(unittest.TestCase):
 
 		function = "phone"
