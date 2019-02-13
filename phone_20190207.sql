@@ -1,5 +1,5 @@
 CREATE OR REPLACE FUNCTION phone(col anyelement)
-    returns float
+    returns varchar
 stable
 as $$
     import re
@@ -44,15 +44,11 @@ as $$
             940: 'TX', 941: 'FL', 947: 'MI', 949: 'CA', 951: 'CA', 952: 'MN', 954: 'FL', 956: 'TX', 959: 'CT',
             970: 'CO', 971: 'OR', 972: 'TX', 973: 'NJ', 978: 'MA', 979: 'TX', 980: 'NC', 984: 'NC', 985: 'LA', 989: 'MI', 854: 'SC'}
 
-    #area_code = list(set(dist.keys()))
-    #state_code = list(set(dist.values()))
-    #areacode_state = area_code + state_code
-
 
     try:
         p = re.compile(r'(?:\+?(\d{1})?-?\(?(\d{3})\)?[\s\-\.]?)?(\d{3})[\s\-\.]*(\d{4})[\s\-\.]*(?:(?:ext\.|x)\s?(\d+))?')
 
-        matchobj = p.search(phone)
+        matchobj = p.search(col)
         if matchobj:
             return dist[int(matchobj.group(2))]
 
