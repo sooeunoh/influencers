@@ -105,13 +105,13 @@ class TestUDF(unittest.TestCase):
 
 		def test_basic17(self):
 			phone_int = 7031139971
-			query = f"SELECT {self.function}(CAST('{phone_int}' AS int)) as result;"
+			query = f"SELECT {self.function}(CAST('{phone_int}' AS varchar)) as result;"
 			result = db.execute(query).result[0]
 			self.assertEqual('VA', result)
 
 		def test_basic18(self):
 			phone_int = 17032756427
-			query = f"SELECT {self.function}(CAST('{phone_int}' AS int)) as result;"
+			query = f"SELECT {self.function}(CAST('{phone_int}' AS varchar)) as result;"
 			result = db.execute(query).result[0]
 			self.assertEqual('VA', result)
 
