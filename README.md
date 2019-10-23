@@ -55,7 +55,7 @@ Let’s take a look at `ar_staffers` as an example.
 Now, we update `ar_staffers` configuration file by adding the following time standardized columns under transform_columns as follows. 
 
 ```yaml
-Tranform_columns:
+tranform_columns:
   record_year: year
   source_load_year: load_date
   bl_collect_year: 2018::float
@@ -154,7 +154,7 @@ We use *graduation_year* column, which is already in our column standardization 
 
 Example
 ```yaml
-  Transform_columns:
+  transform_columns:
     graduation_year: grad_year
     degree: CASE WHEN degree_type = 'Associate' THEN 'associate' WHEN degree_type = 'Bachelor' THEN 'bachelor' WHEN degree_type = 'Business' OR degree_type = 'Graduate' THEN 'graduate' WHEN degree_type = 'PhD' THEN 'phd' WHEN degree_type = 'Medical' THEN 'md' WHEN degree_type = 'Law' THEN 'law' WHEN degree_type = 'Other' THEN 'other' END
 ```
