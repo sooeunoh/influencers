@@ -1,5 +1,17 @@
 # Timestamp Documentation
 
+1. [What are Time Standardized Columns?](#time-standardized-columns)
+
+2. [Work](#work)
+
+    a. [Source Category](#source-category)
+  
+    b. [Priority Column List](#priority-column-list-by-source-category)
+  
+3. [Serves On](#serves-on)
+
+4. [Alumni](#alumni)
+
 # Background
 
 Adding time variables to all relations will help long-term data management, especially beneficial when we will be having data updated. Time stamp attribute on relations will enable us to think of further analysis such as time series. 
@@ -60,6 +72,8 @@ tranform_columns:
   source_load_year: load_date
   bl_collect_year: 2018::float
 ```
+# Time Stamp Relations
+We have time stamps on `WORK` `SERVES_ON` `ALUMNI` so far.
 
 # Work
 
