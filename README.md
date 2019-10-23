@@ -72,8 +72,6 @@ tranform_columns:
   source_load_year: load_date
   bl_collect_year: 2018::float
 ```
-# Time Stamp Relations
-We have time stamps on `WORK` `SERVES_ON` `ALUMNI` so far.
 
 # Work
 
