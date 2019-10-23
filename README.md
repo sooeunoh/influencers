@@ -41,7 +41,7 @@ Year when an individual graduate from school.
 - **termination_year** : 
 Year when individuals terminate their activities. Raw columns with clear representation of termination will be standardized as termination_year.
 
-Example to Understand the difference among record_year, source_load_year and bl_collect_year
+Example to understand the difference among record_year, source_load_year and bl_collect_year.
 Let’s take a look at `ar_staffers` as an example.
 
 | Time Standardized Column  |  record_year |  source_load_year |  bl_collect_year | 
