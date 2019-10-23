@@ -6,7 +6,7 @@ Adding time variables to all relations will help long-term data management, espe
 
 ## Why we use standardized columns?
 
-Many raw columns often have different names even though they have shared meanings. Therefore, we decide to create time standardized columns such that we can group raw columns that have standard meanings across data source into time standardized columns and have a clear understanding of each column. To achieve this, we use user-defined-functions(UDFs) to have shared data type(4-digit year information). All standardized columns live here.
+Many raw columns often have different names even though they have shared meanings. Therefore, we decide to create time standardized columns such that we can group raw columns that have standard meanings across data source into time standardized columns and have a clear understanding of each column. To achieve this, we use user-defined-functions(UDFs) to have shared data type(4-digit year information). All standardized columns live [here](https://docs.google.com/spreadsheets/d/10CFfUEibINVj2KMbe7iqWzDyLXVX2am1g2usCgZ2ZfY/edit#gid=0).
 
 ## Time Standardized Columns
 We can find `record_year`, `source_load_year`, `bl_collect_year`, `termination_year` often regardless of the source category. However, some standardized columns can be found in  particular categories: `reg_date`, `signed_date` in lobbyists, `file_year`, `transaction_date` in contributions. 
