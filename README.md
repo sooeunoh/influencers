@@ -9,7 +9,7 @@ Adding time variables to all relations will help long-term data management, espe
 Many raw columns often have different names even though they have shared meanings. Therefore, we decide to create time standardized columns such that we can group raw columns that have standard meanings across data source into time standardized columns and have a clear understanding of each column. To achieve this, we use user-defined-functions(UDFs) to have shared data type(4-digit year information). All standardized columns live here.
 
 ## Time Standardized Columns
-We can find four standardized columns, `record_year`, `source_load_year`, `bl_collect_year`, `termination_year` anywhere regardless of the source category that we defined. However, we can find some standardized columns in particular categories: `reg_date`, `signed_date` in lobbyists, `file_year`, `transaction_date` in contributions. 
+We can find `record_year`, `source_load_year`, `bl_collect_year`, `termination_year` often regardless of the source category. However, some standardized columns can be found in  particular categories: `reg_date`, `signed_date` in lobbyists, `file_year`, `transaction_date` in contributions. 
 
 - **record_year** : 
 Time stamp of each row regarding the main purpose of the data. Aka, recorded year of the data. Therefore, each row can be different. This always come from raw columns (Bluelabs does not create record_year)
@@ -19,6 +19,24 @@ Year when they(authorities) load data. It is very common to see that the same ye
 
 - **bl_collect_year** : 
 Year when we(Bluelabs) acquire data. This information is obtained via previous Asana task and date last pulled/refreshed section of each source on [Wikipage](https://github.com/bluelabsio/knowledge/wiki/Influencers)
+
+- **reg_date** : 
+When lobbyists register their lobby activity or themselves as lobbyists in lobbyists table 
+
+- **signed_date** : 
+Year when lobby is signed in lobbyists table 
+
+- **file_year** : 
+Year when individuals file transaction (to state) in contribution tables
+
+- **transaction_date** : 
+Transaction year of contribution in contribution tables
+
+- **reappointed_year** : 
+Year when an individual gets reappointed to serve on organization such as committee.
+
+- **graduation_year** : 
+Year when an individual graduate from school. 
 
 - **termination_year** : 
 Year when individuals terminate their activities. Raw columns with clear representation of termination will be standardized as termination_year.
@@ -129,14 +147,24 @@ person_serves_on_cabinet
 
 # Alumni
 
-Unlike other relations, we are going to leave `null` for alumni T2, because you will become an alumni once you graduate and this relation stays forever. If Sooeun Oh graduates Georgetown University in 2019, then Sooeun’s alumni timestamp would be (2019, null). 
+Unlike other relations, we do not have termination year(T2) of alumni, so this is going to be more like a single time label. You will become an alumnus once you graduate and this relation stays forever. If John Smith graduated from Georgetown University in 2018, then John became an alumnus of GU from 2018. 
 
-As we already have a standardized graduation_year column, there is no extra logic to be applied. However, we often see individuals who hold multiple degrees, and a single timestamp would not be able to handle them. To solve this, we need to standardize `degree` column such that we take control of multiple degree holders. 
+We use *graduation_year* column, which is already in our column standardization list. However, we often see individuals who hold multiple degrees, and a single timestamp would not be able to handle them. To solve this, we need to standardize `degree` column such that we take control of multiple degree holders. 
 
-The following is how alumni config would look like.
-
+Example
 ```yaml
   Transform_columns:
     graduation_year: grad_year
-    degree: CASE WHEN school ilike '%law%' then 'law' WHEN school ilike '%business%' then 'graduate' WHEN school ilike '%medical%' then 'md'
+    degree: CASE WHEN degree_type = 'Associate' THEN 'associate' WHEN degree_type = 'Bachelor' THEN 'bachelor' WHEN degree_type = 'Business' OR degree_type = 'Graduate' THEN 'graduate' WHEN degree_type = 'PhD' THEN 'phd' WHEN degree_type = 'Medical' THEN 'md' WHEN degree_type = 'Law' THEN 'law' WHEN degree_type = 'Other' THEN 'other' END
 ```
+
+## Applying functions
+To apply the right, corresponding function to a source table, we have multiple validation steps before applying functions to add start and end year of person_work_employer relation. 
+Let’s suppose we are trying to add start and end year of person_work_employer relation to `ar_staffers`. 
+- First, we get the full source table list of person_work_employer relation by running the query. 
+- Second, check if `ar_staffers` is in person_work_employer relation list. If this returns `True`, proceed to step 3. 
+- In step 3, find which category `ar_staffers` belongs to among staffers/lobbyists/contributions/business/officials/others. `ar_staffers` is in staffers category as the source name ends with _staffers. 
+- In step 4, function for staffers’ start year and one for staffers’ end year that we generated earlier will be applied to `ar_staffers`, return the corresponding 4-digit numeric start and end year as strings. 
+- In step 5, generate a **local temporary table** that includes start and end year and replace the original `ar_staffers` table with the temporary table. Now, we will have updated `ar_staffers` which contains start_year_person_work_employer and end_year_person_work_employer on top of everything!
+
+
