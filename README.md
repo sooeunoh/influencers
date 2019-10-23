@@ -137,7 +137,7 @@ We have 2 comprehensive functions(`work_t1` and `work_t2`) that select start and
 
 # Serves On
 
-Identify the start and end year of `serves_on` relationship between person and organization. Unlike `work`, `serves_on` does not use source category, because we have fewer sources, and each has different relations. Therefore, `serves_on` seems relatively simple but needs to incorporate special conditions by individual source. Let’s take a look at `whitehouse_staffers`. Joshua Friedman, who served Obama as a deputy associate counsel, has a termination year at least in 2017 since we clearly know that Obama’s presidency ended in 2017. However, we are going to leave `null` for Trump staffers unless there is any clear indication of termination. 
+Identify the start and end year of `serves_on` relationship between person and organization. Unlike `work`, `serves_on` does not use source category, because we have fewer sources, and each has different relations. Therefore, `serves_on` seems relatively simple but needs to incorporate special conditions by individual source. Let’s take a look at `whitehouse_staffers`. Joshua Friedman, who served Obama as a deputy associate counsel, would have a termination year at least in 2017 since we clearly know that Obama’s presidency ended in 2017. However, we are going to leave `null` for Trump staffers unless there is any clear indication of termination. 
 
 ### Serves On Relations
 - Cabinet_secretary_serves_on_cabinet
