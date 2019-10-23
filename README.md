@@ -21,7 +21,7 @@ Adding time variables to all relations will help long-term data management, espe
 Many raw columns often have different names even though they have shared meanings. Therefore, we decide to create time standardized columns such that we can group raw columns that have standard meanings across data source into time standardized columns and have a clear understanding of each column. To achieve this, we use user-defined-functions(UDFs) to have shared data type(4-digit year information). All standardized columns live [here](https://docs.google.com/spreadsheets/d/10CFfUEibINVj2KMbe7iqWzDyLXVX2am1g2usCgZ2ZfY/edit#gid=0).
 
 ## Time Standardized Columns
-`record_year`, `source_load_year`, `bl_collect_year`, `termination_year` can be often found regardless of the source category. However, some standardized columns can be found in  particular categories: `reg_date`, `signed_date` in lobbyists, `file_year`, `transaction_date` in contributions. 
+`record_year`, `source_load_year`, `bl_collect_year`, `termination_year` can be often found in source config regardless of the source category. However, some standardized columns can be found in  particular categories: `reg_date`, `signed_date` in lobbyists, `file_year`, `transaction_date` in contributions. 
 
 - **record_year** : 
 Time stamp of each row regarding the main purpose of the data. Aka, recorded year of the data. Therefore, each row can be different. This always come from raw columns (Bluelabs does not create record_year)
