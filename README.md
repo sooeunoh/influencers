@@ -162,7 +162,7 @@ Identify the start and end year of `serves_on` relationship between person and o
 
 Unlike other relations, we do not have end year(T2) of alumni, so this is going to be more like a single time label. You will become an alumnus once you graduate and this relation stays forever. If John Smith graduated from Georgetown University in 2018, then John became an alumnus of GU from 2018. 
 
-We use *graduation_year* column, which is already in [column standardization list](https://docs.google.com/spreadsheets/d/10CFfUEibINVj2KMbe7iqWzDyLXVX2am1g2usCgZ2ZfY/edit#gid=0). However, we often see individuals who hold multiple degrees, and a single timestamp would not be able to handle them. To solve this, we need to standardize `degree` column such that we take control of multiple degree holders. 
+We use `graduation_year` column, which is already in [column standardization list](https://docs.google.com/spreadsheets/d/10CFfUEibINVj2KMbe7iqWzDyLXVX2am1g2usCgZ2ZfY/edit#gid=0). However, we often see individuals who hold multiple degrees, and a single timestamp would not be able to handle them. To solve this, we need to standardize `degree` column such that we take control of multiple degree holders. 
 
 Example
 ```yaml
