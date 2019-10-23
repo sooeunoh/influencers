@@ -55,6 +55,7 @@ Let’s take a look at `ar_staffers` as an example.
 Now, we update `ar_staffers` configuration file by adding the following time standardized columns under transform_columns as follows. 
 
 ```yaml
+Tranform_columns:
   record_year: year
   source_load_year: load_date
   bl_collect_year: 2018::float
