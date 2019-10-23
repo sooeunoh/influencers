@@ -66,13 +66,13 @@ Identify the start and end year of employment between person and organization re
 The bottom line is to select the “best” possible start year whereas to leave the end year as `null` unless it clearly represents the termination of the relationship. We would rather leave end year as `null`, because we do not want to provide wrong/biased information on termination of employment. 
 
 ### Work Relations
-Person_work_other_house_office
-Person_work_other_senate_office
-Person_work_rep_office (federal, state)
-Person_work_senator_office (federal, state)
-Person_work_employer
-Person_work_department
-Person_work_governor_office
+- Person_work_other_house_office
+- Person_work_other_senate_office
+- Person_work_rep_office (federal, state)
+- Person_work_senator_office (federal, state)
+- Person_work_employer
+- Person_work_department
+- Person_work_governor_office
 
 ## Source Category
 
@@ -139,11 +139,11 @@ We have 2 comprehensive functions(`work_t1` and `work_t2`) that select start and
 Identify the start and end year of `serves_on` relationship between person and organization. Unlike `work`, `serves_on` does not use source category, because we have fewer sources, and each has different relations. Therefore, `serves_on` seems relatively simple but needs to incorporate special conditions by individual source. Let’s take a look at `whitehouse_staffers`. Joshua Friedman, who served Obama as a deputy associate counsel, has a termination year at least in 2017 since we clearly know that Obama’s presidency ended in 2017. However, we are going to leave `null` for Trump staffers unless there is any clear indication of termination. 
 
 ### Serves On Relations
-Cabinet_secretary_serves_on_cabinet
-Person_serves_on_advisory_board (federal, state)
-Person_serves_on_department
-Person_serves_on_whitehouse
-person_serves_on_cabinet
+- Cabinet_secretary_serves_on_cabinet
+- Person_serves_on_advisory_board (federal, state)
+- Person_serves_on_department
+- Person_serves_on_whitehouse
+- Person_serves_on_cabinet
 
 # Alumni
 
