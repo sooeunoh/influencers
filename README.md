@@ -1,4 +1,4 @@
-# Welcome to the Timestamp Readme!
+# Timestamp Documentation
 
 # Background
 
