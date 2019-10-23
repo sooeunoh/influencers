@@ -159,13 +159,5 @@ Example
     degree: CASE WHEN degree_type = 'Associate' THEN 'associate' WHEN degree_type = 'Bachelor' THEN 'bachelor' WHEN degree_type = 'Business' OR degree_type = 'Graduate' THEN 'graduate' WHEN degree_type = 'PhD' THEN 'phd' WHEN degree_type = 'Medical' THEN 'md' WHEN degree_type = 'Law' THEN 'law' WHEN degree_type = 'Other' THEN 'other' END
 ```
 
-## Applying functions
-To apply the right, corresponding function to a source table, we have multiple validation steps before applying functions to add start and end year of person_work_employer relation. 
-Let’s suppose we are trying to add start and end year of person_work_employer relation to `ar_staffers`. 
-- First, we get the full source table list of person_work_employer relation by running the query. 
-- Second, check if `ar_staffers` is in person_work_employer relation list. If this returns `True`, proceed to step 3. 
-- In step 3, find which category `ar_staffers` belongs to among staffers/lobbyists/contributions/business/officials/others. `ar_staffers` is in staffers category as the source name ends with _staffers. 
-- In step 4, function for staffers’ start year and one for staffers’ end year that we generated earlier will be applied to `ar_staffers`, return the corresponding 4-digit numeric start and end year as strings. 
-- In step 5, generate a **local temporary table** that includes start and end year and replace the original `ar_staffers` table with the temporary table. Now, we will have updated `ar_staffers` which contains start_year_person_work_employer and end_year_person_work_employer on top of everything!
 
 
